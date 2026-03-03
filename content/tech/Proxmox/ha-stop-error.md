@@ -22,7 +22,7 @@ ha-manager set vm:101 --state disabled
 ```
 
 **界面操作方法：**
-![file](./ha-stop-error/6780d4fcd5c30.png)
+![file](ha-stop-error/6780d4fcd5c30.png)
 
 经过以上操作后，锁定的VM会自动关闭状态，然后启动即可。
 

@@ -14,19 +14,19 @@ tags: [游戏]
 
 仅适用于防骑aoe练级使用，20-23级西部豺狼人23-26湿地豺狼人27-30暮色僵尸洞31-34暮色南狼人35-44尘泥鱼人45-52加基森海盗53-60西瘟疫冰风岗和大锅；
 保持庇护祝福，智慧圣印平砍回蓝(用快速单手武器)，卡cd奉献，30级后卡cd奉献和神圣盾，血线掉到1/5左右丢自己保护或无敌读圣光术。
-![天赋截图](paladin-1.png)
+![天赋截图](paladin/paladin-1.png)
 
 ## 坦克天赋
 [天赋模拟器地址](https://talents.turtlecraft.gg/paladin?points=-AoYFZbCAZoAoB-AoAoAI)
 方案描述
 防骑天赋
-![天赋截图](paladin-2.png)
+![天赋截图](paladin/paladin-2.png)
 
 ## 治疗天赋
 [天赋模拟器地址](https://talents.turtlecraft.gg/paladin?points=AoaAZQFQpAYoB--FoAAAK)
 方案描述
 治疗天赋
-![天赋截图](paladin-3.png)
+![天赋截图](paladin/paladin-3.png)
 
 # 宏：
 ```lua

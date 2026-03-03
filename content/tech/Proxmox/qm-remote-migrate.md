@@ -42,14 +42,14 @@ qm remote-migrate SOURCEVMID TARGETVMID apitoken='Authorization: PVEAPIToken=roo
 **apitoken介绍：**
 
 添加API：特权分离去掉
-![file](./qm-remote-migrate/68d6307750a98.png)
+![file](qm-remote-migrate/68d6307750a98.png)
 
 复制秘钥：添加完成后会弹出页面
-![file](./qm-remote-migrate/68d630105a940.png)
+![file](qm-remote-migrate/68d630105a940.png)
 
 **fingerprint介绍：**
 
-![file](./qm-remote-migrate/68d630d702c34.png)
+![file](qm-remote-migrate/68d630d702c34.png)
 
 命令行查看：
 

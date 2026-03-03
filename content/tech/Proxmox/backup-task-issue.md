@@ -9,10 +9,10 @@ tags: [Proxmox, 技术]
 ## 技术信息
 
 **卡死效果:**
-![file](./backup-task-issue/67a2eacea848b.png)
+![file](backup-task-issue/67a2eacea848b.png)
 
 **备份任务信息无法查看：**
-![file](./backup-task-issue/67a2eae92b341.png)
+![file](backup-task-issue/67a2eae92b341.png)
 
 **常规解决流程：**
 
