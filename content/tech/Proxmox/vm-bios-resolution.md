@@ -1,6 +1,8 @@
 ---
 title: 虚拟机BIOS分辨率修改指南
 tags: [Proxmox, 技术, 免费]
+---
+
 # 虚拟机BIOS分辨率修改指南
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)
 ## 技术信息

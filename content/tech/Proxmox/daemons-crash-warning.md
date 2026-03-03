@@ -1,6 +1,7 @@
 ---
 title: HEALTH_WARN: 5 daemons have recently crashed 解决方法
 tags: [Proxmox, 技术]
+---
 
 # HEALTH_WARN: 5 daemons have recently crashed 解决方法
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)

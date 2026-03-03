@@ -1,6 +1,8 @@
 ---
 title: 网络设置指南
 tags: [Proxmox, 技术, 网络收藏]
+---
+
 # 网络设置指南
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)
 ## 技术信息

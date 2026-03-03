@@ -1,6 +1,7 @@
 ---
 title: Requesting HA stop for VM 101 service 错误解决
 tags: [Proxmox, 技术]
+---
 
 # Requesting HA stop for VM 101 service 错误解决
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)

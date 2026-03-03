@@ -1,6 +1,7 @@
 ---
 title: qm remote-migrate 命令详解
 tags: [Proxmox, 技术]
+---
 
 # qm remote-migrate 命令详解
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)

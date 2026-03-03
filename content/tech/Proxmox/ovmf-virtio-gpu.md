@@ -1,6 +1,7 @@
 ---
 title: OVMF格式与VirtIO-GPU配置指南
 tags: [Proxmox, 技术]
+---
 
 # OVMF格式与VirtIO-GPU配置指南
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)

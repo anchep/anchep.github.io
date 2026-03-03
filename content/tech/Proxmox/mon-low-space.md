@@ -1,6 +1,7 @@
 ---
 title: mon pve is low on available space 解决方法
 tags: [Proxmox, 技术]
+---
 
 # mon pve is low on available space 解决方法
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)

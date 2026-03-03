@@ -1,6 +1,8 @@
 ---
 title: ceph osd perf 性能指标命令
 tags: [Proxmox, 技术]
+---
+
 # ceph osd perf 性能指标命令
 原始链接：[https://www.280i.com/series/pve](https://www.280i.com/series/pve)
 ## 技术信息
