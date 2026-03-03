@@ -1,5 +1,5 @@
 ---
-title: HEALTH_WARN: 5 daemons have recently crashed 解决方法
+title: "HEALTH_WARN: 5 daemons have recently crashed 解决方法"
 tags: [Proxmox, 技术]
 ---
 
