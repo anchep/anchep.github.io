@@ -236,6 +236,12 @@ export function transformLink(src: FullSlug, target: string, opts: TransformOpti
     const canonicalSlug = stripSlashes(targetSlug.slice(".".length))
     let [targetCanonical, targetAnchor] = splitAnchor(canonicalSlug)
 
+    // Check if it's a file path (e.g., image file) by checking for file extension
+    if (getFileExtension(targetCanonical)) {
+      // For file paths, return the relative path from the current file
+      return targetSlug as RelativeURL
+    }
+
     if (opts.strategy === "shortest") {
       // if the file name is unique, then it's just the filename
       const matchingFileNames = opts.allSlugs.filter((slug) => {
