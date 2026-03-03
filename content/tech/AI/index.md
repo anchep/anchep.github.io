@@ -1,5 +1,5 @@
 ---
-title: 人工智能
+title: AI
 tags: [AI]
 ---
 

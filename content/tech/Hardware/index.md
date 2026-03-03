@@ -1,5 +1,5 @@
 ---
-title: 硬件
+title: Hardware
 tags: [硬件]
 ---
 
