@@ -1,0 +1,635 @@
+<!DOCTYPE html><html lang="zh-Hans" style="transform: none;"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<title>PVE虚拟机无法修改分辨率 – 指尖风暴 Typhon Finger</title>
+<meta name="robots" content="max-image-preview:large">
+<meta name="keywords" content="技术信息,">
+<meta name="description" content="首先来看看虚拟机的默认情况： 首先通过修改BIOS里分辨率（ https://www.280i.com/tec...">
+<meta property="og:title" content="PVE虚拟机无法修改分辨率">
+<meta property="og:description" content="首先来看看虚拟机的默认情况： 首先通过修改BIOS里分辨率（ https://www.280i.com/tec...">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.280i.com/tech/12408.html">
+<meta property="og:site_name" content="指尖风暴 Typhon Finger">
+<meta property="og:image" content="https://www.280i.com/wp-content/uploads/2024/12/67652561dd2f7.png">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="md-style-inline-css">
+ .gfm-task-list { border: 1px solid transparent; list-style-type: none; } .gfm-task-list input { margin-right: 10px !important; } .copy-button { cursor: pointer; border: 0; font-size: 12px; text-transform: uppercase; font-weight: 500; padding: 3px 6px 3px 6px; background-color: rgba(255, 255, 255, 0.6); position: absolute; overflow: hidden; top: 5px; right: 5px; border-radius: 3px; } .copy-button:before { content: ""; display: inline-block; width: 16px; height: 16px; margin-right: 3px; background-size: contain; background-image: url("data:image/svg+xml,%3Csvg version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' x=\'0px\' y=\'0px\' width=\'16px\' height=\'16px\' viewBox=\'888 888 16 16\' enable-background=\'new 888 888 16 16\' xml:space=\'preserve\'%3E %3Cpath fill=\'%23333333\' d=\'M903.143,891.429c0.238,0,0.44,0.083,0.607,0.25c0.167,0.167,0.25,0.369,0.25,0.607v10.857 c0,0.238-0.083,0.44-0.25,0.607s-0.369,0.25-0.607,0.25h-8.571c-0.238,0-0.44-0.083-0.607-0.25s-0.25-0.369-0.25-0.607v-2.571 h-4.857c-0.238,0-0.44-0.083-0.607-0.25s-0.25-0.369-0.25-0.607v-6c0-0.238,0.06-0.5,0.179-0.786s0.262-0.512,0.428-0.679 l3.643-3.643c0.167-0.167,0.393-0.309,0.679-0.428s0.547-0.179,0.786-0.179h3.714c0.238,0,0.44,0.083,0.607,0.25 c0.166,0.167,0.25,0.369,0.25,0.607v2.929c0.404-0.238,0.785-0.357,1.143-0.357H903.143z M898.286,893.331l-2.67,2.669h2.67V893.331 z M892.571,889.902l-2.669,2.669h2.669V889.902z M894.321,895.679l2.821-2.822v-3.714h-3.428v3.714c0,0.238-0.083,0.441-0.25,0.607 s-0.369,0.25-0.607,0.25h-3.714v5.714h4.571v-2.286c0-0.238,0.06-0.5,0.179-0.786C894.012,896.071,894.155,895.845,894.321,895.679z M902.857,902.857v-10.286h-3.429v3.714c0,0.238-0.083,0.441-0.25,0.607c-0.167,0.167-0.369,0.25-0.607,0.25h-3.714v5.715H902.857z\' /%3E %3C/svg%3E"); background-repeat: no-repeat; position: relative; top: 3px; } pre { position: relative; } pre:hover .copy-button { background-color: rgba(255, 255, 255, 0.9); } 
+/*# sourceURL=md-style-inline-css */
+</style>
+<link rel="stylesheet" id="bootstrap-css" href="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/bootstrap/css/bootstrap.min.css?ver=4.6.0" media="all">
+<link rel="stylesheet" id="csf-fa5-css" href="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/font-awesome/css/all.min.css?ver=5.14.0" media="all">
+<link rel="stylesheet" id="csf-fa5-v4-shims-css" href="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/font-awesome/css/v4-shims.min.css?ver=5.14.0" media="all">
+<link rel="stylesheet" id="plugins-css" href="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/css/plugins.css?ver=1.0.0" media="all">
+<link rel="stylesheet" id="app-css" href="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/css/app.css?ver=2.7.0" media="all">
+<link rel="stylesheet" id="dark-css" href="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/css/dark.css?ver=2.7.0" media="all">
+<link rel="stylesheet" id="emojify-css" href="https://www.280i.com/wp-content/plugins/wp-githuber-md/assets/vendor/emojify/css/emojify.min.css?ver=1.1.0" media="all">
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/js/jquery.min.js?ver=3.5.1" id="jquery-js"></script>
+<link rel="pingback" href="https://www.280i.com/xmlrpc.php"><link rel="icon" href="https://www.280i.com/wp-content/uploads/2021/09/cropped-Delphistyles-32x32.png" sizes="32x32">
+<link rel="icon" href="https://www.280i.com/wp-content/uploads/2021/09/cropped-Delphistyles-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.280i.com/wp-content/uploads/2021/09/cropped-Delphistyles-180x180.png">
+<meta name="msapplication-TileImage" content="https://www.280i.com/wp-content/uploads/2021/09/cropped-Delphistyles-270x270.png">
+		<style id="wp-custom-css">
+			.col-1 {
+    -ms-flex: 0 0 8.333333%;
+    flex: 0 0 98%;
+    max-width: 98%;
+}
+.col-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 98%;
+    max-width: 98%;
+}
+.article-content .wp-block-code, .article-content pre{
+	padding: 1px;
+}
+
+
+/* 1. 仅针对行内代码（如 URL、参数名）应用样式 */
+/* 使用 :not(pre) 确保这些规则不会影响到黑色的代码块内部 */
+.entry-content :not(pre) > code,
+.post-content :not(pre) > code {
+    display: inline !important;
+    padding: 2px 4px !important;
+    margin: 0 2px !important;
+    background-color: #f3f4f4 !important; /* 浅灰色背景 */
+    color: #444 !important;
+    border-radius: 3px !important;
+    font-family: Consolas, Monaco, monospace !important;
+    word-break: break-all !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 2. 修复多行代码块（JSON 区域）的破碎感 */
+.entry-content pre code {
+    display: block !important; /* 恢复块状显示 */
+    background-color: transparent !important; /* 移除错误的浅色背景气泡 */
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: inherit !important; /* 恢复插件自带的高亮颜色 */
+}		</style>
+		<!-- Cloudfalre Turnstile  -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async="" defer=""></script>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<style id="theia-sticky-sidebar-stylesheet-TSS">.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style></head>
+<body class="wp-singular post-template-default single single-post postid-12408 single-format-standard wp-theme-rizhuti-v2 wide-screen navbar-sticky pagination-numeric no-off-canvas sidebar-right" style="transform: none;">
+<div id="app" class="site" style="transform: none;">
+	
+<header class="site-header">
+    <div class="container">
+	    <div class="navbar">
+			  <div class="logo-wrapper">
+          <a class="logo text" href="https://www.280i.com/">指尖风暴 Typhon Finger</a>
+    
+  </div> 			<div class="sep"></div>
+
+			<nav class="main-menu d-none d-lg-block">
+			<ul id="menu-%e9%a6%96%e9%a1%b5%e7%ae%80%e7%9f%ad%e8%bf%9e%e6%8e%a5%e8%8f%9c%e5%8d%95" class="nav-list u-plain-list"><li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./ann"><i class="fas fa-blog"></i>网站公告</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./news"><i class="fas fa-newspaper"></i>业界新闻</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent"><a title="技术信息" href="https://www.280i.com/./tech"><i class="fas fa-american-sign-language-interpreting"></i>技术信息</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./case"><i class="fab fa-leanpub"></i>经验教程</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./fav"><i class="fas fa-cannabis"></i>网络收藏</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./downloads"><i class="fas fa-cloud-download-alt"></i>资源下载</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./blog"><i class="fab fa-microblog"></i>博客日常</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#"><i class="fas fa-atlas"></i>专题</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series current-post-ancestor current-menu-parent current-post-parent"><a href="https://www.280i.com/series/pve">ProxmoxVE</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series"><a href="https://www.280i.com/series/wow">魔兽世界</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series"><a href="https://www.280i.com/series/esos">ESOS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series"><a href="https://www.280i.com/series/synology">群晖</a></li>
+</ul>
+</li>
+</ul>			</nav>
+			
+			<div class="actions">
+                
+		        
+				<!-- user navbar dropdown -->
+		        				<a class="btn btn-sm ml-2" rel="nofollow noopener noreferrer" href="https://www.280i.com/login?mod=login&amp;redirect_to=https%3A%2F%2Fwww.280i.com%3A443%2Ftech%2F12408.html"><i class="fa fa-user mr-1"></i>登录</a>
+								<!-- user navbar dropdown -->
+
+				<span class="btn btn-sm search-open navbar-button ml-2" rel="nofollow noopener noreferrer" data-action="omnisearch-open" data-target="#omnisearch" title="搜索"><i class="fas fa-search"></i></span>
+                <span class="btn btn-sm toggle-dark navbar-button ml-2" rel="nofollow noopener noreferrer" title="夜间模式"><i class="fa fa-adjust"></i></span>
+		        <div class="burger"></div>
+
+		        
+		    </div>
+		    
+	    </div>
+    </div>
+</header>
+
+<div class="header-gap"></div>
+
+	<main id="main" role="main" class="site-content" style="transform: none;">
+<div class="container" style="transform: none;">
+	<div class="row" style="transform: none;">
+		<div class="content-column col-lg-9" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+			
+		<div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><div class="content-area">
+				
+
+
+<div class="single-download-nav">
+  <ul class="nav nav-pills" id="pills-tab" role="tablist">
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-details-tab" data-toggle="pill" href="#pills-details" role="tab" aria-controls="pills-details" aria-selected="true"><i class="far fa-file-alt mr-1"></i>详情介绍</a>
+    </li>
+
+        <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-comments-tab" data-toggle="pill" href="#pills-comments" role="tab" aria-controls="pills-comments" aria-selected="false"><i class="fa fa-comments-o mr-1"></i>评论建议</a>
+    </li>
+    
+        <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-faq-tab" data-toggle="pill" href="#pills-faq" role="tab" aria-controls="pills-faq" aria-selected="false"><i class="far fa-question-circle mr-1"></i>常见问题</a>
+    </li>
+        
+  </ul>
+</div>
+
+<div class="tab-content" id="pills-tabContent">
+
+  <div class="tab-pane fade show active" id="pills-details" role="tabpanel" aria-labelledby="pills-details-tab">
+    <article id="post-12408" class="article-content post-12408 post type-post status-publish format-standard hentry category-tech series-pve">
+      <div class="container">
+                <div class="article-crumb"><ol class="breadcrumb">当前位置：<li class="home"><i class="fa fa-home"></i> <a href="https://www.280i.com">首页</a></li><li><a href="https://www.280i.com/./tech">技术信息</a></li></ol></div>
+        
+        <header class="entry-header">
+<h1 class="entry-title">PVE虚拟机无法修改分辨率</h1>          <div class="entry-meta">
+            
+                          <span class="meta-author">
+                <a href="https://www.280i.com/author/指尖风暴"><img alt="" data-src="//www.280i.com/wp-content/themes/rizhuti-v2/assets/img/avatar.png" class="avatar avatar-96 photo lazyloaded" height="96" width="96" src="//www.280i.com/wp-content/themes/rizhuti-v2/assets/img/avatar.png">指尖风暴                </a>
+              </span>
+                          <span class="meta-category">
+                <a href="https://www.280i.com/./tech" rel="category">技术信息</a>
+              </span>
+                          <span class="meta-date">
+                <a href="https://www.280i.com/tech/12408.html" rel="nofollow">
+                  <time datetime="2024-12-20T16:10:22+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    1 年前                  </time>
+                </a>
+              </span>
+                            <span class="meta-favnum"><i class="far fa-star"></i> 0</span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 861</span>
+            <span class="meta-shhop-icon"><i class="fas fa-download"></i></span>                <span class="meta-edit"></span>
+            
+
+          </div>
+        </header>
+
+              
+        <div class="entry-wrapper">
+          <div class="entry-content u-text-format u-clearfix">
+            <p>首先来看看虚拟机的默认情况：<br>
+<img decoding="async" src="https://www.280i.com/wp-content/uploads/2024/12/67652561dd2f7.png" alt="file"><br>
+首先通过修改BIOS里分辨率（ <a href="https://www.280i.com/tech/12409.html">https://www.280i.com/tech/12409.html</a> ），若还不生效<br>
+就可以按照这个方式<br>
+这个方式的原理是虚拟出一个USB的显示器<br>
+<img decoding="async" src="https://www.280i.com/wp-content/uploads/2024/12/676529059304a.png" alt="file"><br>
+下载执行压缩包中的批处理文件，然后重启即可。</p>
+<p><img decoding="async" src="https://www.280i.com/wp-content/uploads/2024/12/6765291516d7a.png" alt="file"></p>
+<blockquote>
+<p>此处下载挂了付费，如果赞助本站就付费下载，如果不付费也可以去原站长那里下载。<br>
+原作者：<a href="https://blog.echoquants.com/post-10.html">https://blog.echoquants.com/post-10.html</a></p>
+</blockquote>
+<div class="pt-0 d-none d-block d-xl-none d-lg-none"><aside id="header-widget-shop-down" class="widget-area"><p></p></aside></div><div class="post-note alert alert-info mt-2" role="alert"><small><strong>声明：</strong>本站所有文章，如无特殊说明或标注，均为本站原创发布。任何个人或组织，在未征得本站同意时，禁止复制、盗用、采集、发布本站内容到任何网站、书籍等各类媒体平台。如若本站内容侵犯了原著者的合法权益，可联系我们进行处理。</small></div>
+<div class="entry-share">
+	<div class="row">
+		<div class="col d-none d-lg-block">
+			<a class="share-author" href="https://www.280i.com/author/指尖风暴">
+                <img alt="" data-src="//www.280i.com/wp-content/themes/rizhuti-v2/assets/img/avatar.png" class="lazyload avatar avatar-50 photo" height="50" width="50">指尖风暴<span class="badge badge-warning-lighten mx-2"><i class="fa fa-diamond mr-1"></i>终身VIP</span>            </a>
+		</div>
+		<div class="col-auto mb-3 mb-lg-0">
+			<button class="go-star-btn btn btn-sm btn-outline-info mr-2" data-id="12408"><i class="far fa-star"></i> 收藏</button>			
+			<button class="share-poster btn btn-sm btn-outline-info" data-id="12408"><i class="fa fa-share-alt"></i> 海报分享</button>
+		</div>
+	</div>
+</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+    <div class="tab-pane fade" id="pills-comments" role="tabpanel" aria-labelledby="pills-comments-tab">
+    
+<div id="comments" class="entry-comments">
+    	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">发表回复 <small><a rel="nofollow" id="cancel-comment-reply-link" href="/tech/12408.html#respond" style="display:none;">取消回复</a></small></h3><div class="comment-form"><div class="comment-must-login">您需要登录后才可以发表评论...</div><div class="form-submit"><div class="form-submit-text float-left"><a href="https://www.280i.com/login?mod=login&amp;redirect_to=https%3A%2F%2Fwww.280i.com%3A443%2Ftech%2F12408.html">登录...</a> 后才能评论</div> <input name="submit" type="submit" id="must-submit" class="submit disabled" value="发表" disabled=""></div></div>	</div><!-- #respond -->
+		</div>
+  </div>
+  
+    <div class="tab-pane fade" id="pills-faq" role="tabpanel" aria-labelledby="pills-faq-tab">
+
+    <div class="accordion" id="accordionhelp">
+          <div class="card">
+        <div class="card-header" id="heading-0">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-0" aria-expanded="false" aria-controls="collapse-0">
+              免费下载或者VIP会员资源能否直接商用？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-0" class="collapse" aria-labelledby="heading-0" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            本站所有资源版权均属于原作者所有，这里所提供资源均只能用于参考学习用，请勿直接商用。若由于商用引起版权纠纷，一切责任均由使用者承担。更多说明请参考 VIP介绍。          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-1">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+              提示下载完但解压或打开不了？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            最常见的情况是下载不完整: 可对比下载完压缩包的与网站上的容量，若小于提示的容量则是这个原因。
+迅雷等分片下载出错：本站资源禁止分片下载，使用迅雷等软件下载的均无法解压，请使用浏览器默认下载。 
+若排除这种情况，可在对应资源底部留言，或联络我们。          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-2">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+              付款后无法显示下载地址或者无法查看内容？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            如果您已经成功付款但是网站没有弹出成功提示，请联系站长提供付款信息为您处理          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-3">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+              购买该资源后，可以退款吗？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            源码素材属于虚拟商品，具有可复制性，可传播性，一旦授予，不接受任何形式的退款、换货要求。请您在购买获取之前确认好 是您所需要的资源          </div>
+        </div>
+      </div>
+        </div>
+  </div>
+  
+
+</div>
+
+
+<div class="entry-navigation">
+	<div class="row">
+            	<div class="col-lg-6 col-12">
+            <a class="entry-page-prev lazyload" href="https://www.280i.com/tech/12405.html" title="部署Open5gs报错 trap invalid opcode ip:2bf102b" data-bg="https://www.280i.com/wp-content/uploads/2024/12/6763c18ad537a.png">
+                <div class="entry-page-icon"><i class="fas fa-arrow-left"></i></div>
+                <div class="entry-page-info">
+                    <span class="d-block rnav">上一篇</span>
+                    <span class="d-block title">部署Open5gs报错 trap invalid opcode ip:2bf102b</span>
+                </div>
+            </a> 
+        </div>
+                    	<div class="col-lg-6 col-12">
+            <a class="entry-page-next lazyload" href="https://www.280i.com/tech/12409.html" title="PVE虚拟机BIOS中修改分辨率" data-bg="https://www.280i.com/wp-content/uploads/2024/12/67652888ddb93.png">
+                <div class="entry-page-info">
+                    <span class="d-block rnav">下一篇</span>
+                    <span class="d-block title">PVE虚拟机BIOS中修改分辨率</span>
+                </div>
+                <div class="entry-page-icon"><i class="fas fa-arrow-right"></i></div>
+            </a>
+        </div>
+            </div>
+</div>    <div class="related-posts">
+        <h3 class="u-border-title">相关文章</h3>
+        <div class="row">
+                      <div class="col-lg-6 col-12">
+              <article id="post-12527" class="post post-list post-12527 type-post status-publish format-standard hentry category-tech">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/tech/12527.html" title="Deiban12 Openssh-server配置文件sshd_config详细内容" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/img/thumb.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Deiban12 Openssh-server配置文件sshd_config详细内容"></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.280i.com/tech/12527.html" title="Deiban12 Openssh-server配置文件sshd_config详细内容" rel="bookmark">Deiban12 Openssh-server配置文件sshd_config详细内容</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.280i.com/./tech" rel="category">技术信息</a>
+              </span>
+                          <span class="meta-date">
+                <a href="https://www.280i.com/tech/12527.html" rel="nofollow">
+                  <time datetime="2025-06-28T15:23:48+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    8 月前                  </time>
+                </a>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 115</span>
+            
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                      <div class="col-lg-6 col-12">
+              <article id="post-3782" class="post post-list post-3782 type-post status-publish format-standard has-post-thumbnail hentry category-tech">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/tech/3782.html" title="DouPHP首页展示案例调用和添加方法" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://www.280i.com/wp-content/uploads/2016/02/QQ20160229112526-280x200.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="DouPHP首页展示案例调用和添加方法"></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.280i.com/tech/3782.html" title="DouPHP首页展示案例调用和添加方法" rel="bookmark">DouPHP首页展示案例调用和添加方法</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.280i.com/./tech" rel="category">技术信息</a>
+              </span>
+                          <span class="meta-date">
+                <a href="https://www.280i.com/tech/3782.html" rel="nofollow">
+                  <time datetime="2016-02-29T11:37:20+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    10 年前                  </time>
+                </a>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 463</span>
+            
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                      <div class="col-lg-6 col-12">
+              <article id="post-5142" class="post post-list post-5142 type-post status-publish format-standard has-post-thumbnail hentry category-tech">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/tech/5142.html" title="Delphi访问MySQL乱码问题【问号】" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://www.280i.com/wp-content/uploads/2015/01/42L3YSU913W27S756H0LRDH4JB110865-280x200.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Delphi访问MySQL乱码问题【问号】"></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.280i.com/tech/5142.html" title="Delphi访问MySQL乱码问题【问号】" rel="bookmark">Delphi访问MySQL乱码问题【问号】</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.280i.com/./tech" rel="category">技术信息</a>
+              </span>
+                          <span class="meta-date">
+                <a href="https://www.280i.com/tech/5142.html" rel="nofollow">
+                  <time datetime="2018-12-25T11:41:32+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    7 年前                  </time>
+                </a>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 508</span>
+            
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                      <div class="col-lg-6 col-12">
+              <article id="post-2458" class="post post-list post-2458 type-post status-publish format-standard has-post-thumbnail hentry category-tech tag-mysql">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/tech/2458.html" title="Mysql数据库老报错啊，痛苦了，哪位可以帮忙啊" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://www.280i.com/wp-content/uploads/2014/11/2949160829-280x200.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Mysql数据库老报错啊，痛苦了，哪位可以帮忙啊"></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.280i.com/tech/2458.html" title="Mysql数据库老报错啊，痛苦了，哪位可以帮忙啊" rel="bookmark">Mysql数据库老报错啊，痛苦了，哪位可以帮忙啊</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.280i.com/./tech" rel="category">技术信息</a>
+              </span>
+                          <span class="meta-date">
+                <a href="https://www.280i.com/tech/2458.html" rel="nofollow">
+                  <time datetime="2015-01-10T18:52:20+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    11 年前                  </time>
+                </a>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 239</span>
+            
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                  </div>
+    </div>
+
+			</div></div></div>
+					<div class="sidebar-column col-lg-3" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+				<!-- #secondary -->
+			<div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><aside id="secondary" class="widget-area">
+	<div id="rizhuti_v2_shop_down-2" class="widget rizhuti_v2-widget-shop-down"><div class="price"><h3><span>10</span> <small><i class="fab fa-bitcoin"></i> 金币</small></h3></div><ul class="pricing-options"><li><div class="custom-radio"><input type="radio" id="post_price_opt_no" name="price_filter_opt" checked=""><label for="post_price_opt_no" data-price="&lt;span&gt;10&lt;/span&gt; &lt;small&gt;&lt;i class=&quot;fab fa-bitcoin&quot;&gt;&lt;/i&gt; 金币&lt;/small&gt;"><span class="circle"></span>普通用户购买</label></div><p><button type="button" class="btn btn-block btn-primary mt-3 click-pay-post" data-postid="12408" data-nonce="4afa68cde3" data-price="1">立即购买</button></p></li><li><div class="custom-radio"><input type="radio" id="post_price_opt_vip" name="price_filter_opt"><label for="post_price_opt_vip" data-price="免费"><span class="circle"></span><b class="text-warning"><i class="fa fa-diamond"></i> VIP会员免费下载</b></label></div><p style="display:none;"><small class="d-block my-2">以下会员可免费获取本资源</small><b class="badge badge-success-lighten mr-2"><i class="fa fa-diamond"></i> 包月VIP</b><b class="badge badge-info-lighten mr-2"><i class="fa fa-diamond"></i> 包年VIP</b><b class="badge badge-warning-lighten mr-2"><i class="fa fa-diamond"></i> 终身VIP</b><a href="https://www.280i.com/user/vip" class="btn btn-block btn-warning mt-3" rel="nofollow noopener noreferrer">升级VIP免费下载</a></p></li></ul><div class="down-info"><h5>其他信息</h5><ul class="infos"><li><p class="data-label">文件类型</p><p class="info">zip</p></li></ul></div><div class="down-help mt-2 small text-muted">下载遇到问题？可联系客服或提交工单</div></div><div id="custom_html-2" class="widget_text widget widget_custom_html"><h5 class="widget-title">归属地</h5><div class="textwidget custom-html-widget"><div align="center">
+<img src="https://tool.lu/netcard/">	
+</div>
+</div></div><div id="rizhuti_v2_widget_post_item-2" class="widget rizhuti_v2-widget-post"><h5 class="widget-title">随机文章</h5>        <div class="posts-wrapper list"> 
+                                <article id="post-7859" class="post post-list post-7859 type-post status-publish format-standard has-post-thumbnail hentry category-tech">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/tech/7859.html" title="Manjaro 终端字符间距过大" rel="nofollow noopener noreferrer"><img class=" lazyloaded" data-src="https://www.280i.com/wp-content/uploads/2022/01/158dacfc7fddba64de75cea97cb1f607-150x88.jpeg" src="https://www.280i.com/wp-content/uploads/2022/01/158dacfc7fddba64de75cea97cb1f607-150x88.jpeg" alt="Manjaro 终端字符间距过大"></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.280i.com/tech/7859.html" title="Manjaro 终端字符间距过大" rel="bookmark">Manjaro 终端字符间距过大</a></h2>                        </header>
+                    </div>
+                </article>
+                                <article id="post-12005" class="post post-list post-12005 type-post status-publish format-standard has-post-thumbnail hentry category-fav">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/fav/12005.html" title="java8 无法启用 iDRAC6 控制台" rel="nofollow noopener noreferrer"><img class=" lazyloaded" data-src="https://www.280i.com/wp-content/uploads/2023/10/1698362330-21ee546c4b438c2-300x200.jpg" src="https://www.280i.com/wp-content/uploads/2023/10/1698362330-21ee546c4b438c2-300x200.jpg" alt="java8 无法启用 iDRAC6 控制台"></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.280i.com/fav/12005.html" title="java8 无法启用 iDRAC6 控制台" rel="bookmark">java8 无法启用 iDRAC6 控制台</a></h2>                        </header>
+                    </div>
+                </article>
+                                <article id="post-1541" class="post post-list post-1541 type-post status-publish format-standard has-post-thumbnail hentry category-tech">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/tech/1541.html" title="笔记本电芯更换教程" rel="nofollow noopener noreferrer"><img class=" lazyloaded" data-src="https://www.280i.com/wp-content/uploads/2014/11/Cg-4V1RcbaqIZGuCAAIsjNbVLHIAAQ_PQM-UHwAAiyk776-280x200.jpg" src="https://www.280i.com/wp-content/uploads/2014/11/Cg-4V1RcbaqIZGuCAAIsjNbVLHIAAQ_PQM-UHwAAiyk776-280x200.jpg" alt="笔记本电芯更换教程"></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.280i.com/tech/1541.html" title="笔记本电芯更换教程" rel="bookmark">笔记本电芯更换教程</a></h2>                        </header>
+                    </div>
+                </article>
+                                <article id="post-964" class="post post-list post-964 type-post status-publish format-standard hentry category-news tag-154 tag-135">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/news/964.html" title="百度网盘由于系统问题送3个月会员" rel="nofollow noopener noreferrer"><img class=" lazyloaded" data-src="http://www.280i.com/wp-content/uploads/2014/05/20140528051923.png" src="http://www.280i.com/wp-content/uploads/2014/05/20140528051923.png" alt="百度网盘由于系统问题送3个月会员"></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.280i.com/news/964.html" title="百度网盘由于系统问题送3个月会员" rel="bookmark">百度网盘由于系统问题送3个月会员</a></h2>                        </header>
+                    </div>
+                </article>
+                                <article id="post-11245" class="post post-list post-11245 type-post status-publish format-standard hentry category-reco series-wow">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.280i.com/reco/11245.html" title="魔兽世界[正式服][怀旧服]自动跟随&amp;自动上马&amp;防掉线（私聊、队伍、团队均可）" rel="nofollow noopener noreferrer"><img class=" lazyloaded" data-src="https://www.280i.com/wp-content/uploads/2020/04/fmp.png" src="https://www.280i.com/wp-content/uploads/2020/04/fmp.png" alt="魔兽世界[正式服][怀旧服]自动跟随&amp;自动上马&amp;防掉线（私聊、队伍、团队均可）"></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.280i.com/reco/11245.html" title="魔兽世界[正式服][怀旧服]自动跟随&amp;自动上马&amp;防掉线（私聊、队伍、团队均可）" rel="bookmark">魔兽世界[正式服][怀旧服]自动跟随&amp;自动上马&amp;防掉线（私聊、队伍、团队均可）</a></h2>                        </header>
+                    </div>
+                </article>
+                      </div>
+        </div><div id="nav_menu-2" class="widget widget_nav_menu"><h5 class="widget-title">社交链接</h5><div class="menu-%e7%a4%be%e4%ba%a4%e8%8f%9c%e5%8d%95-container"><ul id="menu-%e7%a4%be%e4%ba%a4%e8%8f%9c%e5%8d%95" class="menu"><li id="menu-item-7525" class="fa fa-play-circle menu-item menu-item-type-custom menu-item-object-custom menu-item-7525"><a href="https://www.ixigua.com/home/5390386648/">西瓜视频</a></li>
+<li id="menu-item-7526" class="fab fa-centercode menu-item menu-item-type-custom menu-item-object-custom menu-item-7526"><a href="https://space.bilibili.com/383418153">Bilibili</a></li>
+<li id="menu-item-10722" class="fab fa-github menu-item menu-item-type-custom menu-item-object-custom menu-item-10722"><a href="https://github.com/anchep">Github</a></li>
+</ul></div></div></aside></div></div>
+			</div>
+</div>
+	</main><!-- #main -->
+	
+	<footer class="site-footer">
+		<div class="footer-links d-none d-lg-block">
+	<div class="container">
+		<h6>友情链接：</h6>
+		<ul class="friendlinks-ul">
+		<li><a target="_blank" href="https://manage.hostdare.com/aff.php?aff=2243" title="HostDare服务器" rel="noopener noreferrer">HostDare服务器</a></li>		</ul>
+	</div>
+</div>
+		<div class="footer-copyright d-flex text-center">
+			<div class="container">
+			    <p class="m-0 small">Copyright © 2024<span class="sep"> | </span><a href="https://beian.miit.gov.cn/">陕ICP备2024041140号</a><span class="sep"> | </span>All rights reserved |<a href="https://www.280i.com/sitemap.xml">Sitemap</a>				</p>
+			</div>
+		</div>
+
+	</footer><!-- #footer -->
+
+</div><!-- #page -->
+
+<div class="rollbar">
+		<ul class="actions">
+			<li>
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=82774815&amp;site=qq&amp;menu=yes" rel="nofollow noopener noreferrer"><i class="fas fa-headset"></i><span>客服</span></a>
+		</li>
+				<li>
+						<a href="https://www.280i.com/user?action=vip" rel="nofollow noopener noreferrer"><i class="fa fa-diamond"></i><span>会员</span></a>
+		</li>
+				<li>
+						<a target="_blank" href="https://space.bilibili.com/383418153/" rel="nofollow noopener noreferrer"><i class="fab fa-youtube"></i><span>B站</span></a>
+		</li>
+				<li>
+						<a target="_blank" href="https://www.ixigua.com/home/5390386648" rel="nofollow noopener noreferrer"><i class="fab fa-ioxhost"></i><span>西瓜视频</span></a>
+		</li>
+				<li>
+						<a href="https://www.280i.com/user" rel="nofollow noopener noreferrer"><i class="far fa-user"></i><span>我的</span></a>
+		</li>
+			</ul>
+		<div id="back-to-top" class="rollbar-item" title="返回顶部">
+		<i class="fas fa-chevron-up"></i>
+	</div>
+</div>
+
+<div class="dimmer"></div>
+
+<div class="off-canvas">
+  <div class="canvas-close"><i class="fas fa-times"></i></div>
+  <div class="mobile-menu d-block d-xl-none d-lg-none"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed"><span class="slicknav_menutxt"></span><span class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;"><li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./ann" role="menuitem" tabindex="-1"><i class="fas fa-blog"></i>网站公告</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./news" role="menuitem" tabindex="-1"><i class="fas fa-newspaper"></i>业界新闻</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent"><a title="技术信息" href="https://www.280i.com/./tech" role="menuitem" tabindex="-1"><i class="fas fa-american-sign-language-interpreting"></i>技术信息</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./case" role="menuitem" tabindex="-1"><i class="fab fa-leanpub"></i>经验教程</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./fav" role="menuitem" tabindex="-1"><i class="fas fa-cannabis"></i>网络收藏</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./downloads" role="menuitem" tabindex="-1"><i class="fas fa-cloud-download-alt"></i>资源下载</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.280i.com/./blog" role="menuitem" tabindex="-1"><i class="fab fa-microblog"></i>博客日常</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row"><a href="#" tabindex="-1"><i class="fas fa-atlas"></i>专题</a>
+<span class="slicknav_arrow">►</span></a><ul class="sub-menu slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series current-post-ancestor current-menu-parent current-post-parent"><a href="https://www.280i.com/series/pve" role="menuitem" tabindex="-1">ProxmoxVE</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series"><a href="https://www.280i.com/series/wow" role="menuitem" tabindex="-1">魔兽世界</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series"><a href="https://www.280i.com/series/esos" role="menuitem" tabindex="-1">ESOS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-series"><a href="https://www.280i.com/series/synology" role="menuitem" tabindex="-1">群晖</a></li>
+</ul>
+</li>
+</ul></div></div>
+</div><div id="omnisearch" class="omnisearch">
+    <div class="container">
+        <form class="omnisearch-form" method="get" action="https://www.280i.com/">
+            <div class="form-group">
+                <div class="input-group input-group-merge input-group-flush">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+
+					<div class="input-group-prepend d-flex align-items-center" style=" max-width: 35%; ">
+                    <div class="dropdown bootstrap-select"><select name="cat" id="omnisearch-cat" class="selectpicker" tabindex="-98">
+	<option value="">全部</option>
+	<option class="level-0" value="148">业界新闻</option>
+	<option class="level-0" value="342">博客日常</option>
+	<option class="level-0" value="4">技术信息</option>
+	<option class="level-0" value="8">数位好物</option>
+	<option class="level-0" value="9">经验教程</option>
+	<option class="level-0" value="1">网站公告</option>
+	<option class="level-0" value="5">网络收藏</option>
+	<option class="level-0" value="6">资源下载</option>
+</select><button type="button" class="btn dropdown-toggle bs-placeholder btn-white" data-toggle="dropdown" role="button" data-id="omnisearch-cat" title="全部"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">全部</div></div> </div></button><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
+				  	</div>
+                    <input type="text" class="search-ajax-input form-control" name="s" value="" placeholder="输入关键词 回车搜索..." autocomplete="off">
+
+                </div>
+            </div>
+        </form>
+        <div class="omnisearch-suggestions">
+            <div class="search-keywords">
+                <a href="https://www.280i.com/tag/ceph" class="tag-cloud-link tag-link-575 tag-link-position-1" style="font-size: 14px;">Ceph</a>
+<a href="https://www.280i.com/tag/linux" class="tag-cloud-link tag-link-117 tag-link-position-2" style="font-size: 14px;">Linux</a>
+<a href="https://www.280i.com/tag/pandorabox" class="tag-cloud-link tag-link-368 tag-link-position-3" style="font-size: 14px;">Pandorabox</a>
+<a href="https://www.280i.com/tag/proxmox" class="tag-cloud-link tag-link-514 tag-link-position-4" style="font-size: 14px;">Proxmox</a>
+<a href="https://www.280i.com/tag/windows" class="tag-cloud-link tag-link-116 tag-link-position-5" style="font-size: 14px;">Windows</a>
+<a href="https://www.280i.com/tag/wordpress" class="tag-cloud-link tag-link-31 tag-link-position-6" style="font-size: 14px;">WordPress</a>
+<a href="https://www.280i.com/./news" class="tag-cloud-link tag-link-148 tag-link-position-7" style="font-size: 14px;">业界新闻</a>
+<a href="https://www.280i.com/./blog" class="tag-cloud-link tag-link-342 tag-link-position-8" style="font-size: 14px;">博客日常</a>
+<a href="https://www.280i.com/tag/%e5%be%ae%e8%bd%af" class="tag-cloud-link tag-link-28 tag-link-position-9" style="font-size: 14px;">微软</a>
+<a href="https://www.280i.com/./tech" class="tag-cloud-link tag-link-4 tag-link-position-10" style="font-size: 14px;">技术信息</a>
+<a href="https://www.280i.com/tag/%e7%94%9f%e6%b4%bb" class="tag-cloud-link tag-link-111 tag-link-position-11" style="font-size: 14px;">生活</a>
+<a href="https://www.280i.com/./case" class="tag-cloud-link tag-link-9 tag-link-position-12" style="font-size: 14px;">经验教程</a>
+<a href="https://www.280i.com/./ann" class="tag-cloud-link tag-link-1 tag-link-position-13" style="font-size: 14px;">网站公告</a>
+<a href="https://www.280i.com/./fav" class="tag-cloud-link tag-link-5 tag-link-position-14" style="font-size: 14px;">网络收藏</a>
+<a href="https://www.280i.com/tag/%e8%8b%b9%e6%9e%9c" class="tag-cloud-link tag-link-165 tag-link-position-15" style="font-size: 14px;">苹果</a>
+<a href="https://www.280i.com/./downloads" class="tag-cloud-link tag-link-6 tag-link-position-16" style="font-size: 14px;">资源下载</a>
+<a href="https://www.280i.com/tag/%e8%b7%af%e7%94%b1%e5%99%a8" class="tag-cloud-link tag-link-89 tag-link-position-17" style="font-size: 14px;">路由器</a>
+<a href="https://www.280i.com/tag/%e9%ad%94%e5%85%bd%e4%b8%96%e7%95%8c" class="tag-cloud-link tag-link-352 tag-link-position-18" style="font-size: 14px;">魔兽世界</a>            </div>
+                    </div>
+    </div>
+</div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/rizhuti-v2/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+  <script id="module-highlight-js"> (function($) { $(function() { $("pre code").each(function(i, e) { var thisclass = $(this).attr("class"); if (typeof thisclass !== "undefined") { if ( thisclass.indexOf("katex") === -1 && thisclass.indexOf("mermaid") === -1 && thisclass.indexOf("seq") === -1 && thisclass.indexOf("flow") === -1 ) { if (typeof hljs !== "undefined") { $(this).closest("pre").addClass("hljs"); hljs.highlightBlock(e); } else { console.log("%c WP Githuber MD %c You have enabled highlight.js modules already, but you have to update this post to take effect, identifying which file should be loaded.\nGithuber MD does not load a whole-fat-packed file for every post.", "background: #222; color: #bada55", "color: #637338"); } } } }); }); })(jQuery); </script>  <script id="module-clipboard"> (function($) { $(function() { var pre = document.getElementsByTagName("pre"); var pasteContent = document.getElementById("paste-content"); var hasLanguage = false; for (var i = 0; i < pre.length; i++) { var codeClass = pre[i].children[0].className; var isLanguage = codeClass.indexOf("language-"); var excludedCodeClassNames = [ "language-katex", "language-seq", "language-sequence", "language-flow", "language-flowchart", "language-mermaid", ]; var isExcluded = excludedCodeClassNames.indexOf(codeClass); if (isExcluded !== -1) { isLanguage = -1; } if (isLanguage !== -1) { var current_pre = pre[i]; var parent = current_pre.parentNode; var div = document.createElement("div"); div.style['position'] = 'relative'; parent.replaceChild(div, current_pre); var button = document.createElement("button"); button.className = "copy-button"; button.textContent = "Copy"; div.appendChild(current_pre); div.appendChild(button); hasLanguage = true; } }; if (hasLanguage) { var copyCode = new ClipboardJS(".copy-button", { target: function(trigger) { return trigger.previousElementSibling; } }); copyCode.on("success", function(event) { event.clearSelection(); event.trigger.textContent = "Copied"; window.setTimeout(function() { event.trigger.textContent = "Copy"; }, 2000); }); } }); })(jQuery); </script> 
+			<script id="module-emojify">
+				(function($) {
+					$(function() {
+						if (typeof emojify !== "undefined") {
+							emojify.setConfig({
+								img_dir: "https://www.280i.com/wp-content/plugins/wp-githuber-md/assets/vendor/emojify/images",
+								blacklist: {
+									"classes": ["no-emojify"],
+									"elements": ["script", "textarea", "pre", "code"]
+								}
+							});
+							emojify.run();
+						} else {
+							console.log("[wp-githuber-md] emogify is undefined.");
+						}
+					});
+				})(jQuery);
+			</script>
+		<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/js/popper.min.js?ver=2.7.0" id="popper-js"></script>
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/bootstrap/js/bootstrap.min.js?ver=4.6.0" id="bootstrap-js"></script>
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/js/html2canvas.min.js?ver=1.0.0" id="html2canvas-js"></script>
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/jarallax/jarallax.min.js?ver=1.12.5" id="jarallax-js"></script>
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/jarallax/jarallax-video.min.js?ver=1.0.1" id="jarallax-video-js"></script>
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/js/plugins.js?ver=2.7.0" id="plugins-js"></script>
+<script id="app-js-extra">
+var rizhutiv2 = {"home_url":"https://www.280i.com","admin_url":"https://www.280i.com/wp-admin/admin-ajax.php","comment_list_order":"desc","infinite_load":"\u52a0\u8f7d\u66f4\u591a","infinite_loading":"\u52a0\u8f7d\u4e2d...","pay_type_html":{"html":"\u003Cdiv class=\"pay-button-box\"\u003E\u003Cdiv class=\"pay-item\" id=\"alipay\" data-type=\"1\"\u003E\u003Ci class=\"alipay\"\u003E\u003C/i\u003E\u003Cspan\u003E\u652f\u4ed8\u5b9d\u003C/span\u003E\u003C/div\u003E\u003C/div\u003E","alipay":1,"weixinpay":0,"iconpay":99,"cdkpay":88},"singular_id":"12408"};
+//# sourceURL=app-js-extra
+</script>
+<script src="https://www.280i.com/wp-content/themes/rizhuti-v2/assets/js/app.js?ver=2.7.0" id="app-js"></script>
+<script src="https://www.280i.com/wp-includes/js/comment-reply.min.js?ver=6.9.1" id="comment-reply-js" async="" data-wp-strategy="async" fetchpriority="low"></script>
+<script src="https://www.280i.com/wp-includes/js/clipboard.min.js?ver=2.0.11" id="clipboard-js"></script>
+<script src="https://www.280i.com/wp-content/plugins/wp-githuber-md/assets/vendor/emojify/js/emojify.min.js?ver=1.1.0" id="emojify-js"></script>
+
+<!-- 自定义js代码 统计代码 -->
+<div class="cf-turnstile" data-sitekey="&lt;YOUR-SITE-KEY&gt;" data-theme="light" data-size="normal" data-callback="onSuccess"></div><!-- 自定义js代码 统计代码 END -->
+
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v67327c56f0bb4ef8b305cae61679db8f1769101564043" integrity="sha512-rdcWY47ByXd76cbCFzznIcEaCN71jqkWBBqlwhF1SY7KubdLKZiEGeP7AyieKZlGP9hbY/MhGrwXzJC/HulNyg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;66d08fd4bb874800a148a4a3f1c7fe70&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+
+
+</body></html>
