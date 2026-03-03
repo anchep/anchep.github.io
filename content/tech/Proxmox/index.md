@@ -1,5 +1,5 @@
 ---
-title: Proxmox - 强大的开源服务器解决方案
+title: Proxmox
 tags: [Proxmox, 虚拟化, 服务器]
 ---
 

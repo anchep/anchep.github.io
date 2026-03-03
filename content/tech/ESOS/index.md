@@ -1,5 +1,5 @@
 ---
-title: ESOS - Enterprise Storage OS
+title: ESOS
 tags: [ESOS, 存储, SAN]
 ---
 
